@@ -76,7 +76,7 @@ export default function Header() {
           </div>
         </nav>
       </header>
-      <div className="tab-content text-light mx-4 mt-5 pt-5" id="myTabContent">
+      <div className="tab-content text-light mx-4 mt-5 mb-4 py-5" id="myTabContent">
         <div
           className="tab-pane fade show active"
           id="home-tab-pane"
