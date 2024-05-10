@@ -1,4 +1,12 @@
 export default function Header() {
+  const handleNavLinkClick = (targetTab) => {
+    // Update the URL
+    window.history.pushState(null, null, targetTab);
+
+    // Optionally, you can also update the active state of the tab if needed
+    // Example: setActiveTab(targetTab);
+  };
+
   return (
     <>
       <header className="fixed-top" id="header">
@@ -20,56 +28,40 @@ export default function Header() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item" role="presentation">
-                  <button
+                  <a
+                    href="#home-tab-pane"
                     className="nav-link active text-dark"
-                    id="home-tab"
                     data-bs-toggle="tab"
-                    data-bs-target="#home-tab-pane"
-                    type="button"
-                    role="tab"
-                    aria-controls="home-tab-pane"
-                    aria-selected="true">
+                    onClick={() => handleNavLinkClick('/home')}>
                     Home
-                  </button>
+                  </a>
                 </li>
                 <li className="nav-item" role="presentation">
-                  <button
+                  <a
+                    href="#portfolio-tab-pane"
                     className="nav-link text-dark"
-                    id="portfolio-tab"
                     data-bs-toggle="tab"
-                    data-bs-target="#portfolio-tab-pane"
-                    type="button"
-                    role="tab"
-                    aria-controls="portfolio-tab-pane"
-                    aria-selected="false">
+                    onClick={() => handleNavLinkClick('/portfolio')}>
                     Portfolio
-                  </button>
+                  </a>
                 </li>
                 <li className="nav-item" role="presentation">
-                  <button
+                  <a
+                    href="#contact-tab-pane"
                     className="nav-link text-dark"
-                    id="contact-tab"
                     data-bs-toggle="tab"
-                    data-bs-target="#contact-tab-pane"
-                    type="button"
-                    role="tab"
-                    aria-controls="contact-tab-pane"
-                    aria-selected="false">
+                    onClick={() => handleNavLinkClick('/contact')}>
                     Contact
-                  </button>
+                  </a>
                 </li>
                 <li className="nav-item" role="presentation">
-                  <button
+                  <a
+                    href="#resume-tab-pane"
                     className="nav-link text-dark"
-                    id="resume-tab"
                     data-bs-toggle="tab"
-                    data-bs-target="#resume-tab-pane"
-                    type="button"
-                    role="tab"
-                    aria-controls="resume-tab-pane"
-                    aria-selected="false">
+                    onClick={() => handleNavLinkClick('/resume')}>
                     Resume
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
