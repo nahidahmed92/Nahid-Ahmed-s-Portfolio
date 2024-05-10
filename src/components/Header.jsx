@@ -21,7 +21,7 @@ export default function Header() {
               <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item" role="presentation">
                   <button
-                    className="nav-link active"
+                    className="nav-link active text-dark"
                     id="home-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#home-tab-pane"
@@ -34,20 +34,20 @@ export default function Header() {
                 </li>
                 <li className="nav-item" role="presentation">
                   <button
-                    className="nav-link"
-                    id="profile-tab"
+                    className="nav-link text-dark"
+                    id="portfolio-tab"
                     data-bs-toggle="tab"
-                    data-bs-target="#profile-tab-pane"
+                    data-bs-target="#portfolio-tab-pane"
                     type="button"
                     role="tab"
-                    aria-controls="profile-tab-pane"
+                    aria-controls="portfolio-tab-pane"
                     aria-selected="false">
-                    Profile
+                    Portfolio
                   </button>
                 </li>
                 <li className="nav-item" role="presentation">
                   <button
-                    className="nav-link"
+                    className="nav-link text-dark"
                     id="contact-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#contact-tab-pane"
@@ -60,7 +60,7 @@ export default function Header() {
                 </li>
                 <li className="nav-item" role="presentation">
                   <button
-                    className="nav-link"
+                    className="nav-link text-dark"
                     id="resume-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#resume-tab-pane"
@@ -102,9 +102,9 @@ export default function Header() {
         </div>
         <div
           className="tab-pane fade"
-          id="profile-tab-pane"
+          id="portfolio-tab-pane"
           role="tabpanel"
-          aria-labelledby="profile-tab"
+          aria-labelledby="portfolio-tab"
           tabIndex="0">
           This is the work tab
         </div>
