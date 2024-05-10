@@ -1,10 +1,7 @@
 export default function Header() {
-  const handleNavLinkClick = (targetTab) => {
-    // Update the URL
+  const handleNavLink = (targetTab) => {
+    // Update  URL
     window.history.pushState(null, null, targetTab);
-
-    // Optionally, you can also update the active state of the tab if needed
-    // Example: setActiveTab(targetTab);
   };
 
   return (
@@ -32,7 +29,7 @@ export default function Header() {
                     href="#home-tab-pane"
                     className="nav-link active text-dark"
                     data-bs-toggle="tab"
-                    onClick={() => handleNavLinkClick('/home')}>
+                    onClick={() => handleNavLink('/home')}>
                     Home
                   </a>
                 </li>
@@ -41,7 +38,7 @@ export default function Header() {
                     href="#portfolio-tab-pane"
                     className="nav-link text-dark"
                     data-bs-toggle="tab"
-                    onClick={() => handleNavLinkClick('/portfolio')}>
+                    onClick={() => handleNavLink('/portfolio')}>
                     Portfolio
                   </a>
                 </li>
@@ -50,7 +47,7 @@ export default function Header() {
                     href="#contact-tab-pane"
                     className="nav-link text-dark"
                     data-bs-toggle="tab"
-                    onClick={() => handleNavLinkClick('/contact')}>
+                    onClick={() => handleNavLink('/contact')}>
                     Contact
                   </a>
                 </li>
@@ -59,7 +56,7 @@ export default function Header() {
                     href="#resume-tab-pane"
                     className="nav-link text-dark"
                     data-bs-toggle="tab"
-                    onClick={() => handleNavLinkClick('/resume')}>
+                    onClick={() => handleNavLink('/resume')}>
                     Resume
                   </a>
                 </li>
