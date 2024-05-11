@@ -1,9 +1,28 @@
-import Home from './pages/About.jsx';
+import { useState } from 'react';
+import About from './pages/About.jsx'; // assuming Home.jsx exists
+import Portfolio from './pages/Portfolio.jsx'; // assuming Portfolio.jsx exists
 
 export default function Header() {
+  const [currentPage, setCurrentPage] = useState('Home');
+
   const handleNavLink = (targetTab) => {
-    // Update  URL
+    // Update URL
     window.history.pushState(null, null, targetTab);
+    setCurrentPage(targetTab); // Update current page state
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page); // Update current page state
+    // Additional logic if needed
+  };
+
+  const renderPage = () => {
+    if (currentPage === 'Home') {
+      return <About handlePageChange={handlePageChange} />;
+    }
+    if (currentPage === 'Portfolio') {
+      return <Portfolio handlePageChange={handlePageChange} />;
+    }
   };
 
   return (
@@ -29,70 +48,34 @@ export default function Header() {
                 <li className="nav-item" role="presentation">
                   <a
                     href="#home-tab-pane"
-                    className="nav-link active text-dark"
+                    className={`nav-link ${
+                      currentPage === 'Home' ? 'active text-dark' : 'text-dark'
+                    }`}
                     data-bs-toggle="tab"
-                    onClick={() => handleNavLink('/home')}>
+                    onClick={() => handleNavLink('Home')}>
                     Home
                   </a>
                 </li>
                 <li className="nav-item" role="presentation">
                   <a
                     href="#portfolio-tab-pane"
-                    className="nav-link text-dark"
+                    className={`nav-link ${
+                      currentPage === 'Portfolio' ? 'active text-dark' : 'text-dark'
+                    }`}
                     data-bs-toggle="tab"
-                    onClick={() => handleNavLink('/portfolio')}>
+                    onClick={() => handleNavLink('Portfolio')}>
                     Portfolio
                   </a>
                 </li>
-                <li className="nav-item" role="presentation">
-                  <a
-                    href="#contact-tab-pane"
-                    className="nav-link text-dark"
-                    data-bs-toggle="tab"
-                    onClick={() => handleNavLink('/contact')}>
-                    Contact
-                  </a>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <a
-                    href="#resume-tab-pane"
-                    className="nav-link text-dark"
-                    data-bs-toggle="tab"
-                    onClick={() => handleNavLink('/resume')}>
-                    Resume
-                  </a>
-                </li>
+                {/* Add other navigation items similarly */}
               </ul>
             </div>
           </div>
         </nav>
       </header>
       <div className="tab-content text-light mx-4 mt-5 mb-4 py-5" id="myTabContent">
-        <Home />
-        <div
-          className="tab-pane fade"
-          id="portfolio-tab-pane"
-          role="tabpanel"
-          aria-labelledby="portfolio-tab"
-          tabIndex="0">
-          This is the work tab
-        </div>
-        <div
-          className="tab-pane fade"
-          id="contact-tab-pane"
-          role="tabpanel"
-          aria-labelledby="contact-tab"
-          tabIndex="0">
-          Contact form will go here
-        </div>
-        <div
-          className="tab-pane fade"
-          id="resume-tab-pane"
-          role="tabpanel"
-          aria-labelledby="resume-tab"
-          tabIndex="0">
-          Resume download and skills will go here
-        </div>
+        {renderPage()}
+        {/* Add other tab content */}
       </div>
     </>
   );
