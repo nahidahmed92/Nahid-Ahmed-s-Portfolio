@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import About from './pages/About.jsx'; // assuming Home.jsx exists
-import Portfolio from './pages/Portfolio.jsx'; // assuming Portfolio.jsx exists
+import About from './pages/About.jsx';
+import Portfolio from './pages/Portfolio.jsx';
+import Contact from './pages/Contact.jsx';
 
 export default function Header() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -8,12 +9,11 @@ export default function Header() {
   const handleNavLink = (targetTab) => {
     // Update URL
     window.history.pushState(null, null, targetTab);
-    setCurrentPage(targetTab); // Update current page state
+    setCurrentPage(targetTab);
   };
 
   const handlePageChange = (page) => {
-    setCurrentPage(page); // Update current page state
-    // Additional logic if needed
+    setCurrentPage(page);
   };
 
   const renderPage = () => {
@@ -22,6 +22,9 @@ export default function Header() {
     }
     if (currentPage === 'Portfolio') {
       return <Portfolio handlePageChange={handlePageChange} />;
+    }
+    if (currentPage === 'Contact') {
+      return <Contact handlePageChange={handlePageChange} />;
     }
   };
 
@@ -67,13 +70,26 @@ export default function Header() {
                     Portfolio
                   </a>
                 </li>
+                <li className="nav-item" role="presentation">
+                  <a
+                    href="#contact-tab-pane"
+                    className={`nav-link ${
+                      currentPage === 'Contact' ? 'active text-dark' : 'text-dark'
+                    }`}
+                    data-bs-toggle="tab"
+                    onClick={() => handleNavLink('Contact')}>
+                    Contact
+                  </a>
+                </li>
                 {/* Add other navigation items similarly */}
               </ul>
             </div>
           </div>
         </nav>
       </header>
-      <div className="tab-content text-light mx-4 mt-5 mb-4 py-5" id="myTabContent">
+      <div
+        className="tab-content d-flex justify-content-center text-light mx-4 mt-5 mb-4 py-5"
+        id="myTabContent">
         {renderPage()}
         {/* Add other tab content */}
       </div>
