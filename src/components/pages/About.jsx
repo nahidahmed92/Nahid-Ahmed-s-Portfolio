@@ -1,3 +1,5 @@
+import myPhoto from '../../../assets/my-photo.png';
+
 export default function About() {
   return (
     <div
@@ -10,7 +12,7 @@ export default function About() {
       <img
         alt="my recent photo"
         id="me"
-        src="../../../assets/my-photo.png"
+        src={myPhoto}
         style={{
           float: 'left',
           maxWidth: '20%',
