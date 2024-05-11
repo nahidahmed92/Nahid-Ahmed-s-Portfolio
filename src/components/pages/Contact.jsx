@@ -7,21 +7,52 @@ export default function Contact() {
     message: '',
   });
 
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
+    // reset error when user types
+    setErrors({ ...errors, [name]: '' });
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('user submission', form);
+    let valid = true;
 
-    // Reset form after submission
-    setForm({
-      name: '',
-      email: '',
-      message: '',
-    });
+    // validate name field
+    if (!form.name.trim()) {
+      setErrors((prevErrors) => ({ ...prevErrors, name: 'Name is required' }));
+      valid = false;
+    }
+
+    // validate email field
+    if (!form.email.trim()) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is required' }));
+      valid = false;
+    }
+
+    // validate message field
+    if (!form.message.trim()) {
+      setErrors((prevErrors) => ({ ...prevErrors, message: 'Message is required' }));
+      valid = false;
+    }
+
+    // valid form
+    if (valid) {
+      console.log('Form submitted:', form);
+
+      // reset form after submission
+      setForm({
+        name: '',
+        email: '',
+        message: '',
+      });
+    }
   };
 
   return (
@@ -47,13 +78,14 @@ export default function Contact() {
               placeholder="John Doe"
               value={form.name}
             />
+            {errors.name && <div className="text-danger">{errors.name}</div>}
           </div>
           <div className="mb-3">
             <label htmlFor="emailInput" className="form-label">
               Email Address
             </label>
             <input
-              type="email"
+              type="text"
               className="form-control"
               id="emailInput"
               name="email"
@@ -61,6 +93,7 @@ export default function Contact() {
               placeholder="name@example.com"
               value={form.email}
             />
+            {errors.email && <div className="text-danger">{errors.email}</div>}
           </div>
           <div className="mb-3">
             <label htmlFor="messageInput" className="form-label">
@@ -73,6 +106,7 @@ export default function Contact() {
               onChange={handleInputChange}
               rows="3"
               value={form.message}></textarea>
+            {errors.message && <div className="text-danger">{errors.message}</div>}
           </div>
           <div className="text-center">
             <button type="submit" className="btn btn-secondary">
