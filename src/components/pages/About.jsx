@@ -10,7 +10,7 @@ export default function About() {
       <img
         alt="my recent photo"
         id="me"
-        src="../../assets/my-photo.jpeg"
+        src="../../assets/my-photo.png"
         style={{
           float: 'left',
           maxWidth: '20%',
