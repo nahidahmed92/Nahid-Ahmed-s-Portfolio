@@ -34,10 +34,12 @@ export default function Contact() {
     if (!form.email.trim()) {
       setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is required' }));
       valid = false;
+    } else if (!/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(form.email.trim())) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: 'Invalid email format' }));
+      valid = false;
     }
-
-    // validate message field
     if (!form.message.trim()) {
+      // validate message field
       setErrors((prevErrors) => ({ ...prevErrors, message: 'Message is required' }));
       valid = false;
     }
