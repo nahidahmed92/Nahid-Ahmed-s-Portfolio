@@ -3,6 +3,9 @@ import GitHubLogo from '../../assets/github.jsx';
 import pwa from '../../../assets/portfolio/pwa.png';
 import socialNetwork from '../../../assets/portfolio/social-network-api.png';
 import techBlog from '../../../assets/portfolio/tech-blog.png';
+import employeeTracker from '../../../assets/portfolio/employee-tracker.png';
+import noteTaker from '../../../assets/portfolio/note-taker.gif';
+import weather from '../../../assets/portfolio/weather-app.png';
 
 export default function Card({ cards }) {
   // checks if card is hovered
@@ -14,6 +17,9 @@ export default function Card({ cards }) {
     PWA: pwa,
     'Social Network': socialNetwork,
     'Tech Blog': techBlog,
+    'Employee Tracker': employeeTracker,
+    'Note Taker': noteTaker,
+    Weather: weather,
   }[title];
 
   // sets the card style when hovered
@@ -40,12 +46,22 @@ export default function Card({ cards }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        height: '100%',
+        height: '327px',
         objectFit: 'cover',
         // add custom backgroundColor here and remove text-bg-secondary
         // backgroundColor: 'powderblue',
       }}>
-      {cardImages && <img src={cardImages} className="card-img" alt={title} />}
+      {cardImages && (
+        <img
+          src={cardImages}
+          className="card-img"
+          alt={title}
+          style={{
+            width: '90%',
+            alignSelf: 'center',
+          }}
+        />
+      )}
       <div className="card-img-overlay flex-column justify-content-end" style={overlayStyle}>
         <div className="d-flex flex-row justify-content-center align-items-center mb-3">
           <h5 className="card-title px-3 justify-content-end">
