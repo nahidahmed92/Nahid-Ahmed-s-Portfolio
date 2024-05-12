@@ -2,6 +2,7 @@ import { useState } from 'react';
 import About from './pages/About.jsx';
 import Portfolio from './pages/Portfolio.jsx';
 import Contact from './pages/Contact.jsx';
+import Resume from './pages/Resume.jsx';
 
 export default function Header() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -25,6 +26,9 @@ export default function Header() {
     }
     if (currentPage === 'Contact') {
       return <Contact handlePageChange={handlePageChange} />;
+    }
+    if (currentPage === 'Resume') {
+      return <Resume handlePageChange={handlePageChange} />;
     }
   };
 
@@ -81,7 +85,17 @@ export default function Header() {
                     Contact
                   </a>
                 </li>
-                {/* Add other navigation items similarly */}
+                <li className="nav-item" role="presentation">
+                  <a
+                    href="#resume-tab-pane"
+                    className={`nav-link ${
+                      currentPage === 'Resume' ? 'active text-dark' : 'text-dark'
+                    }`}
+                    data-bs-toggle="tab"
+                    onClick={() => handleNavLink('Resume')}>
+                    Resume
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -91,7 +105,6 @@ export default function Header() {
         className="tab-content d-flex justify-content-center text-light mx-4 mt-5 mb-4 py-5"
         id="myTabContent">
         {renderPage()}
-        {/* Add other tab content */}
       </div>
     </>
   );
