@@ -3,7 +3,7 @@ import myPhoto from '../../../assets/my-photo.png';
 export default function About() {
   return (
     <div
-      className="tab-pane fade show active w-50"
+      className="tab-pane fade show active"
       id="home-tab-pane"
       role="tabpanel"
       aria-labelledby="home-tab"
@@ -25,6 +25,15 @@ export default function About() {
         career change because of my deep enthusiasm for it. I look forward to starting my day
         eagerly anticipating in the work I will contribute.
       </p>
+      <style>
+        {`
+      @media (min-width: 768px) {
+        #home-tab-pane {
+          width: 50%;
+        }
+      }
+    `}
+      </style>
     </div>
   );
 }
