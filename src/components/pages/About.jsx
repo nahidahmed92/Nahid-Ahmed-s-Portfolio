@@ -19,24 +19,21 @@ export default function About() {
           marginRight: '20px',
         }}
       />
-      <p>
-        HOME Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, molestiae non?
-        Quibusdam at sapiente, ipsum illum necessitatibus odit veniam enim odio provident, saepe
-        fugiat recusandae optio voluptates, consequatur deserunt amet? Lorem ipsum dolor, sit amet
-        consectetur adipisicing elit. Error odit sunt architecto reprehenderit rem corporis, eaque
-        voluptate eum perspiciatis ipsam dicta. Sequi omnis, earum illo numquam accusantium iure
-        quia exercitationem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-        laborum sit rerum odio obcaecati eveniet veritatis magni, beatae sapiente similique earum
-        voluptas tenetur doloribus eos quaerat, quam deleniti error autem? Lorem ipsum dolor sit
-        amet consectetur adipisicing elit. Alias assumenda consequuntur possimus quidem iste, totam,
-        ipsum pariatur praesentium, nisi illo aspernatur? Atque, modi praesentium aperiam facere
-        alias hic animi porro? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam quia
-        ipsam enim? Id nulla ullam, quae sunt nemo molestias, sapiente facilis dolorum fugit odio
-        magni eos quod, laudantium a odit? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Veniam dignissimos, temporibus sapiente ad in consectetur repellendus, voluptas laudantium
-        adipisci laborum, repudiandae porro ducimus quis dolore maiores laboriosam magnam ea vero?
-        HOME
+      <p className="text-align-justify">
+        I'm a driven individual who has a strong passion for QA Automation. Although I didn't
+        initially pursue this field after completing my college education, I made a deliberate
+        career change because of my deep enthusiasm for it. I look forward to starting my day
+        eagerly anticipating in the work I will contribute.
       </p>
+      <style>
+        {`
+      @media (min-width: 768px) {
+        #home-tab-pane {
+          width: 50%;
+        }
+      }
+    `}
+      </style>
     </div>
   );
 }

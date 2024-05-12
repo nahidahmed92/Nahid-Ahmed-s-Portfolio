@@ -2,9 +2,9 @@ export default function Resume() {
   return (
     <div
       className="tab-pane fade show active w-75"
-      id="home-tab-pane"
+      id="resume-tab-pane"
       role="tabpanel"
-      aria-labelledby="home-tab"
+      aria-labelledby="resume-tab"
       tabIndex="0">
       <h1>Resume</h1>
       <div className="col-12 text-center my-3">
