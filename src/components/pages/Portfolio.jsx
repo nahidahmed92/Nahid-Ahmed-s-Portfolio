@@ -21,24 +21,39 @@ export default function Portfolio() {
       description: 'About Tech by Tech',
     },
     {
-      title: 'Social Network',
+      title: 'Employee Tracker',
       link: null,
-      repo: 'https://github.com/nahidahmed92/Social-Network-API',
-      description: 'Social Network API',
+      repo: 'https://github.com/nahidahmed92/Employee-Tracker',
+      description: 'Track Employee Data with Database',
+    },
+    {
+      title: 'Note Taker',
+      link: 'https://note-taker-lqxj.onrender.com',
+      repo: 'https://github.com/nahidahmed92/Note-Taker',
+      description: 'Note taking application using express.js',
+    },
+    {
+      title: 'Weather',
+      link: 'https://nahidahmed92.github.io/Weather-App/',
+      repo: 'https://github.com/nahidahmed92/Weather-App',
+      description: 'Weather Forecast API',
     },
   ];
 
   return (
     <div
       className="tab-pane fade show active"
-      id="home-tab-pane"
+      id="portfolio-tab-pane"
       role="tabpanel"
-      aria-labelledby="home-tab"
+      aria-labelledby="portfolio-tab"
       tabIndex="0">
       <h1>Portfolio</h1>
-      <div className="d-flex flex-row">
+
+      <div className="row">
         {cards.map((card, index) => (
-          <Card cards={card} key={index} />
+          <div className="col-12 col-md-6 col-lg-4 mb-4" key={index}>
+            <Card cards={card} />
+          </div>
         ))}
       </div>
     </div>
