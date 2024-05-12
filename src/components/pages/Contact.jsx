@@ -34,7 +34,7 @@ export default function Contact() {
     if (!form.email.trim()) {
       setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is required' }));
       valid = false;
-    } else if (!/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(form.email.trim())) {
+    } else if (!/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/.test(form.email.trim())) {
       setErrors((prevErrors) => ({ ...prevErrors, email: 'Invalid email format' }));
       valid = false;
     }
@@ -59,15 +59,15 @@ export default function Contact() {
 
   return (
     <div
-      className="d-flex flex-column tab-pane fade show active w-50"
+      className="d-flex flex-column tab-pane fade show active"
       id="contact-tab-pane"
       role="tabpanel"
       aria-labelledby="contact-tab"
       tabIndex="0">
       <h1>Contact</h1>
       <div className="border border-1 border-light rounded p-4">
-        <form className="contactForm" onSubmit={handleFormSubmit}>
-          <div className="mb-3">
+        <form className="contactForm row g-3" onSubmit={handleFormSubmit}>
+          <div className="col-12 mb-3">
             <label htmlFor="nameInput" className="form-label">
               Name
             </label>
@@ -82,7 +82,7 @@ export default function Contact() {
             />
             {errors.name && <div className="text-danger">{errors.name}</div>}
           </div>
-          <div className="mb-3">
+          <div className="col-12 mb-3">
             <label htmlFor="emailInput" className="form-label">
               Email Address
             </label>
@@ -97,7 +97,7 @@ export default function Contact() {
             />
             {errors.email && <div className="text-danger">{errors.email}</div>}
           </div>
-          <div className="mb-3">
+          <div className="col-12 mb-3">
             <label htmlFor="messageInput" className="form-label">
               Message
             </label>
@@ -110,7 +110,7 @@ export default function Contact() {
               value={form.message}></textarea>
             {errors.message && <div className="text-danger">{errors.message}</div>}
           </div>
-          <div className="text-center">
+          <div className="col-12 text-center">
             <button type="submit" className="btn btn-secondary">
               Submit
             </button>
