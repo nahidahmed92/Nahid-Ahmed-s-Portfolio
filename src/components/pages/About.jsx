@@ -19,7 +19,7 @@ export default function About() {
           marginRight: '20px',
         }}
       />
-      <p className="text-align-justify">
+      <p>
         I'm a driven individual who has a strong passion for QA Automation. Although I didn't
         initially pursue this field after completing my college education, I made a deliberate
         career change because of my deep enthusiasm for it. I look forward to starting my day
