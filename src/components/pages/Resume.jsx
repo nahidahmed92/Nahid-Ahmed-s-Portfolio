@@ -8,7 +8,10 @@ export default function Resume() {
       tabIndex="0">
       <h1>Resume</h1>
       <div className="col-12 text-center my-3">
-        <a className="btn btn-secondary" href="../../../assets/nahid-ahmed-resume.docx" download>
+        <a
+          className="btn btn-secondary"
+          href="../../../public/assets/nahid-ahmed-resume.docx"
+          download>
           <span id="resume" data-desc="Click to Download">
             Download
           </span>
