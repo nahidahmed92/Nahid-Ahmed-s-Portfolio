@@ -10,14 +10,14 @@ export default function About() {
       style={{ width: '100%' }}
       tabIndex="0">
       <h1>About Me</h1>
-      <div className="row my-5 pe-5">
+      <div className="row my-5 pe-5" id="pic-desc">
         <div className="col-12 col-md-6 order-md-1 d-flex justify-content-center">
           <img
             alt="my recent photo"
-            className="img-fluid w-50"
+            className="img-fluid"
             id="me"
             src={myPhoto}
-            // style={{ width: '60%' }}
+            style={{ width: '50%' }}
           />
         </div>
         <div className="col-12 col-md-6 order-md-2">
@@ -37,12 +37,17 @@ export default function About() {
       </div>
       <style>
         {`
-      @media (min-width: 768px) {
-        #home-tab-pane {
-          width: 50%;
-        }
-      }
-    `}
+          @media (max-width: 767px) {
+            #pic-desc {
+              padding-right: 0 !important;
+              margin-right: 0 !important;
+            }
+            #me {
+              margin-bottom: 3rem;
+              width: 100% !important;
+            }
+          }
+        `}
       </style>
     </div>
   );
