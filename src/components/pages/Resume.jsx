@@ -5,6 +5,7 @@ export default function Resume() {
       id="resume-tab-pane"
       role="tabpanel"
       aria-labelledby="resume-tab"
+      style={{ width: '100%' }}
       tabIndex="0">
       <h1>Resume</h1>
       <div className="col-12 text-center my-3">
