@@ -4,18 +4,30 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: '',
     email: '',
+    phone: '',
     message: '',
   });
 
   const [errors, setErrors] = useState({
     name: '',
     email: '',
+    phone: '',
     message: '',
   });
 
+  const formatPhoneNumber = (value) => {
+    const removeSpace = ('' + value).replace(/\D/g, '');
+    const phoneValue = removeSpace.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (phoneValue) {
+      return `(${phoneValue[1]}) ${phoneValue[2]}-${phoneValue[3]}`;
+    }
+    return value;
+  };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setForm({ ...form, [name]: value });
+    const formattedValue = name === 'phone' ? formatPhoneNumber(value) : value;
+    setForm({ ...form, [name]: formattedValue });
     // reset error when user types
     setErrors({ ...errors, [name]: '' });
   };
@@ -38,6 +50,7 @@ export default function Contact() {
       setErrors((prevErrors) => ({ ...prevErrors, email: 'Invalid email format' }));
       valid = false;
     }
+
     if (!form.message.trim()) {
       // validate message field
       setErrors((prevErrors) => ({ ...prevErrors, message: 'Message is required' }));
@@ -52,6 +65,7 @@ export default function Contact() {
       setForm({
         name: '',
         email: '',
+        phone: '',
         message: '',
       });
     }
@@ -67,7 +81,7 @@ export default function Contact() {
       <h1>Contact</h1>
       <div className="border border-1 border-light rounded p-4">
         <form className="contactForm row g-3" onSubmit={handleFormSubmit}>
-          <div className="col-12 mb-3">
+          <div className="col-12">
             <label htmlFor="nameInput" className="form-label">
               Name
             </label>
@@ -82,7 +96,7 @@ export default function Contact() {
             />
             {errors.name && <div className="text-danger">{errors.name}</div>}
           </div>
-          <div className="col-12 mb-3">
+          <div className="col-12">
             <label htmlFor="emailInput" className="form-label">
               Email Address
             </label>
@@ -97,7 +111,23 @@ export default function Contact() {
             />
             {errors.email && <div className="text-danger">{errors.email}</div>}
           </div>
-          <div className="col-12 mb-3">
+          <div className="col-12">
+            <label htmlFor="phoneInput" className="form-label">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              className="form-control"
+              id="phoneInput"
+              maxLength="10"
+              name="phone"
+              onChange={handleInputChange}
+              placeholder="(212) 222-3333"
+              value={form.phone}
+            />
+            {errors.phone && <div className="text-danger">{errors.phone}</div>}
+          </div>
+          <div className="col-12">
             <label htmlFor="messageInput" className="form-label">
               Message
             </label>
