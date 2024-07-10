@@ -36,11 +36,11 @@ export default function Header() {
     <>
       <header className="fixed-top" id="header">
         <nav className="navbar navbar-expand-lg bg-secondary text-light">
-          <div className="container-fluid">
+          <div className="container-fluid d-flex justify-content-between">
             <a className="navbar-brand" href="/">
-              Nahid Ahmed
+              Full Stack Developer | QA Automation Engineer
             </a>
-            <button
+            {/* <button
               className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
@@ -49,8 +49,8 @@ export default function Header() {
               aria-expanded="false"
               aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            </button> */}
+            <div className="" id="navbarSupportedContent">
               <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item" role="presentation">
                   <a
