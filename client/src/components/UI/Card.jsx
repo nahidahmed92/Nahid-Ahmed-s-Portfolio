@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import GitHubLogo from '../../assets/github.jsx';
-import pwa from '../../../public/assets/portfolio/pwa.png';
-import socialNetwork from '../../../public/assets/portfolio/social-network-api.png';
-import techBlog from '../../../public/assets/portfolio/tech-blog.png';
-import employeeTracker from '../../../public/assets/portfolio/employee-tracker.png';
-import noteTaker from '../../../public/assets/portfolio/note-taker.gif';
-import weather from '../../../public/assets/portfolio/weather-app.png';
+import pwa from '../../../../assets/portfolio/pwa.png';
+import socialNetwork from '../../../../assets/portfolio/social-network-api.png';
+import techBlog from '../../../../assets/portfolio/tech-blog.png';
+import employeeTracker from '../../../../assets/portfolio/employee-tracker.png';
+import noteTaker from '../../../../assets/portfolio/note-taker.gif';
+import weather from '../../../../assets/portfolio/weather-app.png';
 
 export default function Card({ cards }) {
   // checks if card is hovered
@@ -76,13 +76,7 @@ export default function Card({ cards }) {
             </a>
           </h5>
           <a href={repo} target="_blank">
-            <GitHubLogo
-              className="logo mx-2"
-              aria-label="Github logo"
-              fill="white"
-              height="35"
-              width="35"
-            />
+            <GitHubLogo className="logo mx-2" aria-label="Github logo" fill="white" height="35" width="35" />
           </a>
         </div>
         <p className="card-text d-flex justify-content-center">

@@ -1,4 +1,4 @@
-import myPhoto from '../../../public/assets/my-photo.png';
+import myPhoto from '../../../../assets/my-photo.png';
 
 export default function About() {
   return (
@@ -12,13 +12,7 @@ export default function About() {
       <h1>About Me</h1>
       <div className="row my-5 pe-5" id="pic-desc">
         <div className="col-12 col-md-6 order-md-1 d-flex justify-content-center">
-          <img
-            alt="my recent photo"
-            className="img-fluid"
-            id="me"
-            src={myPhoto}
-            style={{ width: '50%' }}
-          />
+          <img alt="my recent photo" className="img-fluid" id="me" src={myPhoto} style={{ width: '50%' }} />
         </div>
         <div className="col-12 col-md-6 order-md-2">
           <p
@@ -28,10 +22,9 @@ export default function About() {
               fontWeight: '400',
               fontStyle: 'normal',
             }}>
-            I'm a driven individual who has a strong passion for QA Automation. Although I didn't
-            initially pursue this field after completing my college education, I made a deliberate
-            career change because of my deep enthusiasm for it. I look forward to starting my day
-            eagerly anticipating in the work I will contribute.
+            I'm a driven individual who has a strong passion for QA Automation. Although I didn't initially pursue this
+            field after completing my college education, I made a deliberate career change because of my deep enthusiasm
+            for it. I look forward to starting my day eagerly anticipating in the work I will contribute.
           </p>
         </div>
       </div>

@@ -32,7 +32,7 @@ export default function Contact() {
     setErrors({ ...errors, [name]: '' });
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     let valid = true;
 
@@ -46,7 +46,7 @@ export default function Contact() {
     if (!form.email.trim()) {
       setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is required' }));
       valid = false;
-    } else if (!/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/.test(form.email.trim())) {
+    } else if (!/^([a-zA-Z0-9_.-]+)@([\da-zA-Z.-]+)\.([a-zA-Z.]{2,6})$/.test(form.email.trim())) {
       setErrors((prevErrors) => ({ ...prevErrors, email: 'Invalid email format' }));
       valid = false;
     }
@@ -60,14 +60,32 @@ export default function Contact() {
     // valid form
     if (valid) {
       console.log('Form submitted:', form);
+      try {
+        const response = await fetch('/api/contacts', {
+          method: 'POST',
+          body: JSON.stringify(form),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-      // reset form after submission
-      setForm({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-      });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        console.log('Server response:', data);
+
+        // reset form after submission
+        setForm({
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+        });
+      } catch (error) {
+        console.error('Submission error:', error);
+      }
     }
   };
 
@@ -122,7 +140,7 @@ export default function Contact() {
               maxLength="10"
               name="phone"
               onChange={handleInputChange}
-              placeholder="(212) 222-3333"
+              placeholder="(212) 123-4567"
               value={form.phone}
             />
             {errors.phone && <div className="text-danger">{errors.phone}</div>}
