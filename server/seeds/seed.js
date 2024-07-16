@@ -4,7 +4,7 @@ const Contact = require('../models/Contact.js');
 const contactData = require('./contactData.json');
 
 const seedDB = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: false, alter: true });
 
   const contacts = await Contact.bulkCreate(contactData);
 
