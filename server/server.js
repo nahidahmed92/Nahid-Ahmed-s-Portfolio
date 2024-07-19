@@ -32,7 +32,7 @@ sequelize
   })
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
+      console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
     });
   })
   .catch((err) => {
