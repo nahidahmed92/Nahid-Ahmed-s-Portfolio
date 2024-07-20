@@ -32,6 +32,12 @@ export default function Contact() {
     setErrors({ ...errors, [name]: '' });
   };
 
+  const showToast = () => {
+    const toastElement = document.getElementById('successToast');
+    const toast = new bootstrap.Toast(toastElement);
+    toast.show();
+  };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     let valid = true;
@@ -83,6 +89,7 @@ export default function Contact() {
           phone: '',
           message: '',
         });
+        showToast();
       } catch (error) {
         console.error('Submission error:', error);
       }
@@ -164,6 +171,30 @@ export default function Contact() {
             </button>
           </div>
         </form>
+      </div>
+
+      <div
+        className="toast-container"
+        style={{
+          position: 'fixed',
+          top: '40%',
+          alignSelf: 'center',
+          zIndex: '1050',
+        }}>
+        <div
+          id="successToast"
+          className="toast"
+          style={{ position: '1050' }}
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          data-bs-autohide="true">
+          <div className="toast-header bg-secondary">
+            <strong className="me-auto">Success</strong>
+            <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div className="toast-body bg-secondary">Form submitted successfully!</div>
+        </div>
       </div>
     </div>
   );
