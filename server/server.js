@@ -11,9 +11,9 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(
   cors({
-    origin: 'https://nahid-ahmed-s-portfolio.vercel.app',
+    origin: 'https://nahidahmed.com',
     methods: ['POST'],
-    credentials: true,
+    headers: ['Content-Type'],
   })
 );
 app.use(express.json());
