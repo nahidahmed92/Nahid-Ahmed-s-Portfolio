@@ -13,7 +13,7 @@ app.use(
   cors({
     origin: 'https://nahidahmed.com',
     methods: ['POST'],
-    headers: ['Content-Type'],
+    allowedHeaders: ['Content-Type'],
     credentials: true,
   })
 );
