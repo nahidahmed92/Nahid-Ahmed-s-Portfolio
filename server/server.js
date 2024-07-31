@@ -14,6 +14,7 @@ app.use(
     origin: 'https://nahidahmed.com',
     methods: ['POST'],
     headers: ['Content-Type'],
+    credentials: true,
   })
 );
 app.use(express.json());
