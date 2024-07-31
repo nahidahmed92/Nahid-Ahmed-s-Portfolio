@@ -13,6 +13,7 @@ app.use(
   cors({
     origin: 'https://nahid-ahmed-s-portfolio.vercel.app',
     methods: ['POST'],
+    credentials: true,
   })
 );
 app.use(express.json());
