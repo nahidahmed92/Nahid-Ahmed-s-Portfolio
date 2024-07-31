@@ -9,9 +9,15 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const corsOptions = {
+  origin: 'https://nahidahmed.com',
+  methods: 'POST',
+  credential: 'true',
+};
 
 // Routes
 app.use(routes);
