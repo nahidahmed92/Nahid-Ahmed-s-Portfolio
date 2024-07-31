@@ -67,7 +67,7 @@ export default function Contact() {
     if (valid) {
       console.log('Form submitted:', form);
       try {
-        const response = await fetch('https://nahid-ahmed-s-portfolio.vercel.app' + '/api/contacts', {
+        const response = await fetch('/api/contacts', {
           method: 'POST',
           body: JSON.stringify(form),
           headers: {
