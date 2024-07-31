@@ -16,7 +16,6 @@ app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
   origin: 'http://nahidahmed.com',
   methods: 'POST',
-  credential: 'true',
 };
 
 // Routes
