@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 // app.use(routes);
-app.use('/api', routes);
+app.use(routes);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/dist')));
