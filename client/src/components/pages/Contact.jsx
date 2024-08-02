@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import usePostData from '../../../hooks/usePostData';
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -15,8 +14,6 @@ export default function Contact() {
     phone: '',
     message: '',
   });
-
-  const { data, error, submitData, isSubmitting } = usePostData('/api/contacts');
 
   const formatPhoneNumber = (value) => {
     const removeSpace = ('' + value).replace(/\D/g, '');
@@ -70,20 +67,19 @@ export default function Contact() {
     if (valid) {
       console.log('Form submitted:', form);
       try {
-        // const response = await fetch('/api/contacts', {
-        //   method: 'POST',
-        //   body: JSON.stringify(form),
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        // });
+        const response = await fetch('/api/contacts', {
+          method: 'POST',
+          body: JSON.stringify(form),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-        const data = await submitData(form);
-
-        if (error) {
+        if (!response.ok) {
           throw new Error('Network response was not ok');
         }
 
+        const data = await response.json();
         console.log('Server response:', data);
 
         // reset form after submission
