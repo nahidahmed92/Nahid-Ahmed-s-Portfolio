@@ -1,7 +1,9 @@
 import useSWR from 'swr';
+import { useState } from 'react';
+
 import { fetcher } from '../utils/fetcher';
 
-export default function usePostData(url, data) {
+export default function usePostData(url, formData) {
   // const {
   //   data: responseData,
   //   error,
