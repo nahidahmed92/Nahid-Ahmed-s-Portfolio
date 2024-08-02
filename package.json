@@ -2,14 +2,14 @@
   "name": "nahid-ahmed-portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "api/index.js",
   "homepage": "https://www.nahidahmed.com",
   "private": true,
   "scripts": {
-    "start": "cd server && npm run start",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed",
+    "start": "cd api && npm run start",
+    "develop": "concurrently \"cd api && npm run watch\" \"cd client && npm run dev\"",
+    "install": "cd api && npm i && cd ../client && npm i",
+    "seed": "cd api && npm run seed",
     "build": "cd client && npm run build"
   },
   "dependencies": {
