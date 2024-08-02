@@ -1,45 +1,25 @@
-import useSWR from 'swr';
-import { useState } from 'react';
+import useSWRMutation from 'swr/mutation';
 
-import { fetcher } from '../utils/fetcher';
+async function postData(url, { arg }) {
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(arg),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
-export default function usePostData(url, formData) {
-  // const {
-  //   data: responseData,
-  //   error,
-  //   mutate,
-  // } = useSWR(url, (url) => fetcher(url, 'POST', data), {
-  //   revalidateOnFocus: false,
-  //   shouldRetryOnError: false,
-  // });
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
 
-  // return {
-  //   data: responseData,
-  //   error,
-  //   mutate, // for manual revalidation or state updates
-  // };
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState(null);
+  return response.json();
+}
 
-  const { data, mutate } = useSWR(
-    isSubmitting
-      ? [url, { method: 'POST', body: JSON.stringify(formData), headers: { 'Content-Type': 'application/json' } }]
-      : null,
-    fetcher,
-    { revalidateOnFocus: false }
-  );
-  console.log(`usepostdata: ${data}`);
+export default function usePostData(url) {
+  const { data, error, trigger } = useSWRMutation(url, postData);
 
-  const submitData = async () => {
-    setIsSubmitting(true);
-    try {
-      await mutate();
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const submitData = (form) => trigger({ arg: form });
 
-  return { data, error, isSubmitting, submitData };
+  return { data, error, submitData, isSubmitting: !data && !error };
 }
