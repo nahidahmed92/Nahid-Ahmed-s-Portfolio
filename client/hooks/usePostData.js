@@ -28,6 +28,7 @@ export default function usePostData(url, formData) {
     fetcher,
     { revalidateOnFocus: false }
   );
+  console.log(`usepostdata: ${data}`);
 
   const submitData = async () => {
     setIsSubmitting(true);
