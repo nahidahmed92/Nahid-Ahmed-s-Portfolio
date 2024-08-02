@@ -78,11 +78,11 @@ export default function Contact() {
         //   },
         // });
 
-        const response = await submitData();
+        await submitData();
 
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        // if (!response.ok) {
+        //   throw new Error('Network response was not ok');
+        // }
 
         const data = await response.json();
         console.log('Server response:', data);
