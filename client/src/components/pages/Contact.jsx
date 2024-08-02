@@ -174,7 +174,7 @@ export default function Contact() {
               {errors.message && <div className="text-danger">{errors.message}</div>}
             </div>
             <div className="col-12 text-center">
-              <button type="submit" className="btn btn-secondary" disabled={isSubmitting}>
+              <button type="submit" className="btn btn-secondary">
                 Submit
               </button>
             </div>
