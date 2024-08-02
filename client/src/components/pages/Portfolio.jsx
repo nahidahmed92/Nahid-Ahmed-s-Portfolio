@@ -41,20 +41,22 @@ export default function Portfolio() {
   ];
 
   return (
-    <div
-      className="tab-pane fade show active"
-      id="portfolio-tab-pane"
-      role="tabpanel"
-      aria-labelledby="portfolio-tab"
-      tabIndex="0">
-      <h1>Portfolio</h1>
+    <div className="tab-content d-flex justify-content-center text-light mx-4 mt-5 mb-4 py-5" id="myTabContent">
+      <div
+        className="tab-pane fade show active"
+        id="portfolio-tab-pane"
+        role="tabpanel"
+        aria-labelledby="portfolio-tab"
+        tabIndex="0">
+        <h1>Portfolio</h1>
 
-      <div className="row">
-        {cards.map((card, index) => (
-          <div className="col-12 col-md-6 col-lg-4 mb-4" key={index}>
-            <Card cards={card} />
-          </div>
-        ))}
+        <div className="row">
+          {cards.map((card, index) => (
+            <div className="col-12 col-md-6 col-lg-4 mb-4" key={index}>
+              <Card cards={card} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
