@@ -16,7 +16,7 @@ export default function Contact() {
     message: '',
   });
 
-  const { data, error, mutate } = usePostData('/api/contacts', form);
+  const { data, error, isSubmitting, submitData } = usePostData('/api/contacts', form);
 
   const formatPhoneNumber = (value) => {
     const removeSpace = ('' + value).replace(/\D/g, '');
@@ -78,7 +78,7 @@ export default function Contact() {
         //   },
         // });
 
-        const response = await mutate();
+        const response = await submitData();
 
         if (!response.ok) {
           throw new Error('Network response was not ok');

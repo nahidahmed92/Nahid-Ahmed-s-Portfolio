@@ -1,21 +1,42 @@
 import useSWR from 'swr';
 import { fetcher } from '../utils/fetcher';
 
-const usePostData = (url, data) => {
-  const {
-    data: responseData,
-    error,
-    mutate,
-  } = useSWR(url, (url) => fetcher(url, 'POST', data), {
-    revalidateOnFocus: false,
-    shouldRetryOnError: false,
-  });
+export default function usePostData(url, data) {
+  // const {
+  //   data: responseData,
+  //   error,
+  //   mutate,
+  // } = useSWR(url, (url) => fetcher(url, 'POST', data), {
+  //   revalidateOnFocus: false,
+  //   shouldRetryOnError: false,
+  // });
 
-  return {
-    data: responseData,
-    error,
-    mutate, // for manual revalidation or state updates
+  // return {
+  //   data: responseData,
+  //   error,
+  //   mutate, // for manual revalidation or state updates
+  // };
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+
+  const { data, mutate } = useSWR(
+    isSubmitting
+      ? [url, { method: 'POST', body: JSON.stringify(formData), headers: { 'Content-Type': 'application/json' } }]
+      : null,
+    fetcher,
+    { revalidateOnFocus: false }
+  );
+
+  const submitData = async () => {
+    setIsSubmitting(true);
+    try {
+      await mutate();
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-};
 
-export default usePostData;
+  return { data, error, isSubmitting, submitData };
+}
