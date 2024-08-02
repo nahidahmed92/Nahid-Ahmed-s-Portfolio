@@ -4,30 +4,18 @@ import mediumLogo from '../assets/medium.svg';
 
 export default function Footer() {
   return (
-    <footer className="footer mt-auto py-3 bg-secondary fixed-bottom">
+    <footer className="footer mt-auto py-2 bg-secondary">
       <div className="container text-center">
         {/* <span className="text-light">Hello World</span> */}
         <div>
           <a href="https://github.com/nahidahmed92" target="_blank">
-            <GitHubLogo
-              className="logo mx-2"
-              alt="Github logo"
-              width="35"
-              height="35"
-              fill="black"
-            />
+            <GitHubLogo className="logo mx-2" alt="github logo" width="30" height="30" fill="black" />
           </a>
           <a href="https://linkedin.com/in/nahidahmed92" target="_blank">
-            <img
-              src={linkedinLogo}
-              className="logo mx-2"
-              alt="LinkedIn logo"
-              width="35"
-              height="35"
-            />
+            <img src={linkedinLogo} className="logo mx-2" alt="linkedIn logo" width="30" height="30" />
           </a>
           <a href="https://medium.com/@npahmed92" target="_blank">
-            <img src={mediumLogo} className="logo mx-2" alt="Medium logo" width="35" height="35" />
+            <img src={mediumLogo} className="logo mx-2" alt="medium logo" width="30" height="30" />
           </a>
         </div>
       </div>

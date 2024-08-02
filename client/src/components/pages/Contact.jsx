@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import usePostData from '../../../hooks/usePostData';
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -14,6 +15,8 @@ export default function Contact() {
     phone: '',
     message: '',
   });
+
+  const { data, error, mutate } = usePostData('/api/contacts', form);
 
   const formatPhoneNumber = (value) => {
     const removeSpace = ('' + value).replace(/\D/g, '');
@@ -67,13 +70,15 @@ export default function Contact() {
     if (valid) {
       console.log('Form submitted:', form);
       try {
-        const response = await fetch('/api/contacts', {
-          method: 'POST',
-          body: JSON.stringify(form),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        // const response = await fetch('/api/contacts', {
+        //   method: 'POST',
+        //   body: JSON.stringify(form),
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        // });
+
+        const response = await mutate();
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -98,102 +103,107 @@ export default function Contact() {
 
   return (
     <div
-      className="d-flex flex-column tab-pane fade show active"
-      id="contact-tab-pane"
-      role="tabpanel"
-      aria-labelledby="contact-tab"
-      tabIndex="0">
+      className="tab-content d-flex flex-column justify-content-center text-light mx-4 mt-5 mb-4 py-5"
+      id="myTabContent">
       <h1>Contact</h1>
-      <div className="border border-1 border-light rounded p-4">
-        <form className="contactForm row g-3" onSubmit={handleFormSubmit}>
-          <div className="col-12">
-            <label htmlFor="nameInput" className="form-label">
-              Name
-            </label>
-            <input
-              type="name"
-              className="form-control"
-              id="nameInput"
-              name="name"
-              onChange={handleInputChange}
-              placeholder="John Doe"
-              value={form.name}
-            />
-            {errors.name && <div className="text-danger">{errors.name}</div>}
-          </div>
-          <div className="col-12">
-            <label htmlFor="emailInput" className="form-label">
-              Email Address
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="emailInput"
-              name="email"
-              onChange={handleInputChange}
-              placeholder="name@example.com"
-              value={form.email}
-            />
-            {errors.email && <div className="text-danger">{errors.email}</div>}
-          </div>
-          <div className="col-12">
-            <label htmlFor="phoneInput" className="form-label">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              className="form-control"
-              id="phoneInput"
-              maxLength="10"
-              name="phone"
-              onChange={handleInputChange}
-              placeholder="(212) 123-4567"
-              value={form.phone}
-            />
-            {errors.phone && <div className="text-danger">{errors.phone}</div>}
-          </div>
-          <div className="col-12">
-            <label htmlFor="messageInput" className="form-label">
-              Message
-            </label>
-            <textarea
-              className="form-control"
-              id="messageInput"
-              name="message"
-              onChange={handleInputChange}
-              rows="3"
-              value={form.message}></textarea>
-            {errors.message && <div className="text-danger">{errors.message}</div>}
-          </div>
-          <div className="col-12 text-center">
-            <button type="submit" className="btn btn-secondary">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
-
       <div
-        className="toast-container"
-        style={{
-          position: 'fixed',
-          top: '40%',
-          alignSelf: 'center',
-          zIndex: '1050',
-        }}>
+        className="d-flex flex-column tab-pane fade show active"
+        id="contact-tab-pane"
+        role="tabpanel"
+        aria-labelledby="contact-tab"
+        tabIndex="0">
+        {/* <h1>Contact</h1> */}
+        <div className="border border-1 border-light rounded p-4">
+          <form className="contactForm row g-3" onSubmit={handleFormSubmit}>
+            <div className="col-12">
+              <label htmlFor="nameInput" className="form-label">
+                Name
+              </label>
+              <input
+                type="name"
+                className="form-control"
+                id="nameInput"
+                name="name"
+                onChange={handleInputChange}
+                placeholder="John Doe"
+                value={form.name}
+              />
+              {errors.name && <div className="text-danger">{errors.name}</div>}
+            </div>
+            <div className="col-12">
+              <label htmlFor="emailInput" className="form-label">
+                Email Address
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="emailInput"
+                name="email"
+                onChange={handleInputChange}
+                placeholder="name@example.com"
+                value={form.email}
+              />
+              {errors.email && <div className="text-danger">{errors.email}</div>}
+            </div>
+            <div className="col-12">
+              <label htmlFor="phoneInput" className="form-label">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                className="form-control"
+                id="phoneInput"
+                maxLength="10"
+                name="phone"
+                onChange={handleInputChange}
+                placeholder="(212) 123-4567"
+                value={form.phone}
+              />
+              {errors.phone && <div className="text-danger">{errors.phone}</div>}
+            </div>
+            <div className="col-12">
+              <label htmlFor="messageInput" className="form-label">
+                Message
+              </label>
+              <textarea
+                className="form-control"
+                id="messageInput"
+                name="message"
+                onChange={handleInputChange}
+                rows="3"
+                value={form.message}></textarea>
+              {errors.message && <div className="text-danger">{errors.message}</div>}
+            </div>
+            <div className="col-12 text-center">
+              <button type="submit" className="btn btn-secondary">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+
         <div
-          id="successToast"
-          className="toast"
-          style={{ position: '1050' }}
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-          data-bs-autohide="true">
-          <div className="toast-header bg-secondary">
-            <strong className="me-auto">Success</strong>
-            <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          className="toast-container"
+          style={{
+            position: 'fixed',
+            top: '40%',
+            alignSelf: 'center',
+            zIndex: '1050',
+          }}>
+          <div
+            id="successToast"
+            className="toast"
+            style={{ position: '1050' }}
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            data-bs-autohide="true">
+            <div className="toast-header bg-secondary">
+              <strong className="me-auto">Success</strong>
+              <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div className="toast-body bg-secondary">Form submitted successfully!</div>
           </div>
-          <div className="toast-body bg-secondary">Form submitted successfully!</div>
         </div>
       </div>
     </div>

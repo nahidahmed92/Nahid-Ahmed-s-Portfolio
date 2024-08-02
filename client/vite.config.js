@@ -16,12 +16,5 @@ export default defineConfig({
       },
     },
   },
-  optimizeDeps: {
-    include: ['**/*.docx'],
-    exclude: [],
-    // add MIME types for specific file extensions
-    fileExtensions: {
-      '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    },
-  },
+  assetsInclude: ['**/*.docx'],
 });
