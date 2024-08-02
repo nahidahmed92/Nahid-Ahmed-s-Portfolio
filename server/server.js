@@ -21,7 +21,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-// app.use(routes);
 app.use(routes);
 
 if (process.env.NODE_ENV === 'production') {
