@@ -16,7 +16,7 @@ export default function Contact() {
     message: '',
   });
 
-  const { data, error, mutate } = usePostData('/api/contacts', form);
+  const { data, error, isSubmitting, submitData } = usePostData('/api/contacts', form);
 
   const formatPhoneNumber = (value) => {
     const removeSpace = ('' + value).replace(/\D/g, '');
@@ -78,7 +78,7 @@ export default function Contact() {
         //   },
         // });
 
-        const response = await mutate();
+        const response = await submitData();
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -127,6 +127,7 @@ export default function Contact() {
                 onChange={handleInputChange}
                 placeholder="John Doe"
                 value={form.name}
+                disabled={isSubmitting}
               />
               {errors.name && <div className="text-danger">{errors.name}</div>}
             </div>
@@ -142,6 +143,7 @@ export default function Contact() {
                 onChange={handleInputChange}
                 placeholder="name@example.com"
                 value={form.email}
+                disabled={isSubmitting}
               />
               {errors.email && <div className="text-danger">{errors.email}</div>}
             </div>
@@ -158,6 +160,7 @@ export default function Contact() {
                 onChange={handleInputChange}
                 placeholder="(212) 123-4567"
                 value={form.phone}
+                disabled={isSubmitting}
               />
               {errors.phone && <div className="text-danger">{errors.phone}</div>}
             </div>
@@ -171,11 +174,12 @@ export default function Contact() {
                 name="message"
                 onChange={handleInputChange}
                 rows="3"
-                value={form.message}></textarea>
+                value={form.message}
+                disabled={isSubmitting}></textarea>
               {errors.message && <div className="text-danger">{errors.message}</div>}
             </div>
             <div className="col-12 text-center">
-              <button type="submit" className="btn btn-secondary">
+              <button type="submit" className="btn btn-secondary" disabled={isSubmitting}>
                 Submit
               </button>
             </div>
