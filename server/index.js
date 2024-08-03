@@ -21,6 +21,19 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+async function run() {
+  try {
+    app.listen(PORT, () => {
+      console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
+    });
+
+    app.use('/', (req, res) => {
+      res.send('server running');
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
 // Routes
 // app.use(routes); // this causes a 500 error
 app.use('/', (req, res) => {
@@ -35,9 +48,9 @@ app.use('/', (req, res) => {
 //   });
 // }
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
+// });
 
 // sequelize
 //   .authenticate()
