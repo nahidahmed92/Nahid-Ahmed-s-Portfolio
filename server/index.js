@@ -1,27 +1,27 @@
-// const cors = require('cors');
+const cors = require('cors');
 const express = require('express');
 // const path = require('path');
 
-// const routes = require('./routes');
+const routes = require('./routes');
 const sequelize = require('./config/connection.js');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-// app.use(
-//   cors({
-//     origin: 'https://nahidahmed.com',
-//     methods: ['POST'],
-//     allowedHeaders: ['Content-Type'],
-//     credentials: true,
-//   })
-// );
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: '*',
+    methods: ['GET', 'POST'],
+    // allowedHeaders: ['Content-Type'],
+    credentials: true,
+  })
+);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
-// app.use(routes); // this causes a 500 error
+app.use(routes); // this causes a 500 error
 app.use('/', (req, res) => {
   res.send('server running');
 });
@@ -39,7 +39,7 @@ app.use('/', (req, res) => {
 // });
 
 sequelize
-  // .authenticate()
+  .authenticate()
   .then(() => {
     console.log('Database connected...');
     return sequelize.sync({ force: false, alter: true });
