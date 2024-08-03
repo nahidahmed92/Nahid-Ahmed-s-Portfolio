@@ -26,25 +26,29 @@ app.use('/', (req, res) => {
   res.send('server running');
 });
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '../client/dist')));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-  });
-}
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+//   });
+// }
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Database connected...');
-    return sequelize.sync({ force: false, alter: true });
-  })
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  });
+app.listen(PORT, () => {
+  console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
+});
+
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Database connected...');
+//     return sequelize.sync({ force: false, alter: true });
+//   })
+//   .then(() => {
+//     app.listen(PORT, () => {
+//       console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
+//     });
+//   })
+//   .catch((err) => {
+//     console.error('Unable to connect to the database:', err);
+//   });
