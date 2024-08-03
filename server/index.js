@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3001;
 const corsOptions = {
   origin: 'https://nahidahmed.com',
   methods: ['GET', 'POST'],
-  // allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type'],
   credentials: true,
 };
 
