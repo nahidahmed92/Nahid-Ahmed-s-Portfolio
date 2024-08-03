@@ -39,7 +39,7 @@ app.use('/', (req, res) => {
 // });
 
 sequelize
-  .authenticate()
+  // .authenticate()
   .then(() => {
     console.log('Database connected...');
     return sequelize.sync({ force: false, alter: true });
