@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import usePostData from '../../../hooks/usePostData';
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -15,8 +14,6 @@ export default function Contact() {
     phone: '',
     message: '',
   });
-
-  const { data, error, isSubmitting, submitData } = usePostData('/api/contacts', form);
 
   const formatPhoneNumber = (value) => {
     const removeSpace = ('' + value).replace(/\D/g, '');
@@ -70,20 +67,20 @@ export default function Contact() {
     if (valid) {
       console.log('Form submitted:', form);
       try {
-        // const response = await fetch('/api/contacts', {
-        //   method: 'POST',
-        //   body: JSON.stringify(form),
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        // });
+        const response = await fetch('https://api.nahidahmed.com/api/contacts', {
+          method: 'POST',
+          body: JSON.stringify(form),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          mode: 'cors',
+        });
 
-        const data = await submitData();
-
-        if (error) {
+        if (!response.ok) {
           throw new Error('Network response was not ok');
         }
 
+        const data = await response.json();
         console.log('Server response:', data);
 
         // reset form after submission
@@ -126,7 +123,6 @@ export default function Contact() {
                 onChange={handleInputChange}
                 placeholder="John Doe"
                 value={form.name}
-                disabled={isSubmitting}
               />
               {errors.name && <div className="text-danger">{errors.name}</div>}
             </div>
@@ -142,7 +138,6 @@ export default function Contact() {
                 onChange={handleInputChange}
                 placeholder="name@example.com"
                 value={form.email}
-                disabled={isSubmitting}
               />
               {errors.email && <div className="text-danger">{errors.email}</div>}
             </div>
@@ -159,7 +154,6 @@ export default function Contact() {
                 onChange={handleInputChange}
                 placeholder="(212) 123-4567"
                 value={form.phone}
-                disabled={isSubmitting}
               />
               {errors.phone && <div className="text-danger">{errors.phone}</div>}
             </div>
@@ -173,12 +167,11 @@ export default function Contact() {
                 name="message"
                 onChange={handleInputChange}
                 rows="3"
-                value={form.message}
-                disabled={isSubmitting}></textarea>
+                value={form.message}></textarea>
               {errors.message && <div className="text-danger">{errors.message}</div>}
             </div>
             <div className="col-12 text-center">
-              <button type="submit" className="btn btn-secondary" disabled={isSubmitting}>
+              <button type="submit" className="btn btn-secondary">
                 Submit
               </button>
             </div>
