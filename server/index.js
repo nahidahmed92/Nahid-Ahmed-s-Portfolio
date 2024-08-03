@@ -35,21 +35,21 @@ app.use('/', (req, res) => {
 //   });
 // }
 
-// app.listen(PORT, () => {
-//   console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
+});
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Database connected...');
-    return sequelize.sync({ force: false, alter: true });
-  })
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  });
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Database connected...');
+//     return sequelize.sync({ force: false, alter: true });
+//   })
+//   .then(() => {
+//     app.listen(PORT, () => {
+//       console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
+//     });
+//   })
+//   .catch((err) => {
+//     console.error('Unable to connect to the database:', err);
+//   });
