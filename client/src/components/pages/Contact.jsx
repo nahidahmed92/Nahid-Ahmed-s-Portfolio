@@ -67,7 +67,7 @@ export default function Contact() {
     if (valid) {
       console.log('Form submitted:', form);
       try {
-        const response = await fetch('https://api.nahidahmed.com/api/contacts', {
+        const response = await fetch(process.env.REACT_APP_CONTACT_URL, {
           method: 'POST',
           body: JSON.stringify(form),
           headers: {
