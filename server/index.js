@@ -2,7 +2,7 @@ const cors = require('cors');
 const express = require('express');
 // const path = require('path');
 
-// const routes = require('./routes');
+const routes = require('./routes');
 const sequelize = require('./config/connection.js');
 
 const app = express();
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-// app.use(routes); // this causes a 500 error
+app.use(routes);
 app.use('/', (req, res) => {
   res.send('server running');
 });
@@ -34,10 +34,6 @@ app.use('/', (req, res) => {
 //     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 //   });
 // }
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on http://${process.env.DB_HOST}:${PORT}`);
-// });
 
 sequelize
   .authenticate()
