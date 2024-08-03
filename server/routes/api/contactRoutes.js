@@ -16,6 +16,18 @@ router.post('/', async (req, res) => {
   try {
     const contactData = await Contact.create(req.body);
 
+    const url = 'https://api.nahidahmed.com';
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(req.body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors',
+    });
+
+    const data = await response.json();
+
     // send email notification
     await sendEmail(
       process.env.EMAIL_USER,
@@ -23,7 +35,7 @@ router.post('/', async (req, res) => {
       `Hello,\n\n${contactData.message}\n\nThank You,\n\n${contactData.name}\n${contactData.email}\n${contactData.phone}`
     );
 
-    res.status(200).json(contactData);
+    res.status(200).json(contactData, data);
   } catch (err) {
     res.status(400).json(err);
   }

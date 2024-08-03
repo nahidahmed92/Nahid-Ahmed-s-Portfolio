@@ -67,7 +67,7 @@ export default function Contact() {
     if (valid) {
       console.log('Form submitted:', form);
       try {
-        const response = await fetch(import.meta.env.VITE_API_URL + 'api/contacts', {
+        const response = await fetch('api/contacts', {
           method: 'POST',
           body: JSON.stringify(form),
           headers: {
