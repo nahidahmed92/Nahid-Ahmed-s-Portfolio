@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use(routes); // this causes a 500 error
+// app.use(routes); // this causes a 500 error
 app.use('/', (req, res) => {
   res.send('server running');
 });
