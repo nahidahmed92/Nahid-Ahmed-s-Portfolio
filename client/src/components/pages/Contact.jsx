@@ -70,20 +70,19 @@ export default function Contact() {
     if (valid) {
       console.log('Form submitted:', form);
       try {
-        // const response = await fetch('/api/contacts', {
-        //   method: 'POST',
-        //   body: JSON.stringify(form),
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        // });
+        const response = await fetch('http://api.nahidahmed.com/api/contacts', {
+          method: 'POST',
+          body: JSON.stringify(form),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-        const data = await submitData();
-
-        if (error) {
+        if (!response.ok) {
           throw new Error('Network response was not ok');
         }
 
+        const data = await response.json();
         console.log('Server response:', data);
 
         // reset form after submission
