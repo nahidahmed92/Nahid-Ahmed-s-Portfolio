@@ -1,6 +1,6 @@
 const cors = require('cors');
 const express = require('express');
-// const path = require('path');
+const path = require('path');
 
 const routes = require('./routes');
 const sequelize = require('./config/connection.js');
@@ -27,13 +27,13 @@ app.use('/', (req, res) => {
   res.send('server running');
 });
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, '../client/dist')));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
 
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-//   });
-// }
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  });
+}
 
 sequelize
   .authenticate()
