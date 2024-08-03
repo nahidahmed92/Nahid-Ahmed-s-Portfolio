@@ -9,16 +9,16 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(
-  cors({
-    origin: 'https://nahidahmed.com',
-    methods: ['POST'],
-    allowedHeaders: ['Content-Type'],
-    credentials: true,
-  })
-);
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(
+//   cors({
+//     origin: 'https://nahidahmed.com',
+//     methods: ['POST'],
+//     allowedHeaders: ['Content-Type'],
+//     credentials: true,
+//   })
+// );
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 // Routes
 // app.use(routes);
