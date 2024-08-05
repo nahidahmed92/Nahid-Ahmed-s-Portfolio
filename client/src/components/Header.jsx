@@ -16,11 +16,11 @@ export default function Header() {
   return (
     <>
       <header className="fixed-top" id="header">
-        <nav className="navbar navbar-expand-lg bg-secondary text-light">
-          <div className="container-fluid d-flex justify-content-between">
+        <nav className="navbar navbar-expand-lg bg-light text-light" id="nav">
+          <div className="container-fluid d-flex justify-content-sm-between justify-content-center" id="nav-container">
             <a
               className="navbar-brand"
-              href="/"
+              // href="/"
               onClick={(e) => {
                 e.preventDefault();
                 handleNavLink('/');

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Contact = require('../../models/Contact');
 const sendEmail = require('../../mailer');
 
-router.get('/', async (req, res) => {
+router.get('/itsmineonly', async (req, res) => {
   try {
     const contactData = await Contact.findAll();
     res.status(200).json(contactData);
