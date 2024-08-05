@@ -108,7 +108,6 @@ export default function Contact() {
         role="tabpanel"
         aria-labelledby="contact-tab"
         tabIndex="0">
-        {/* <h1>Contact</h1> */}
         <div className="border border-1 border-light rounded p-4">
           <form className="contactForm row g-3" onSubmit={handleFormSubmit}>
             <div className="col-12">
@@ -171,7 +170,7 @@ export default function Contact() {
               {errors.message && <div className="text-danger">{errors.message}</div>}
             </div>
             <div className="col-12 text-center">
-              <button type="submit" className="btn btn-secondary">
+              <button type="submit" className="btn btn-light">
                 Submit
               </button>
             </div>
