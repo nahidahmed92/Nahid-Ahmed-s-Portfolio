@@ -4,7 +4,7 @@ import pwa from '../../../../assets/portfolio/pwa.png';
 import socialNetwork from '../../../../assets/portfolio/social-network-api.png';
 import techBlog from '../../../../assets/portfolio/tech-blog.png';
 import employeeTracker from '../../../../assets/portfolio/employee-tracker.png';
-import noteTaker from '../../../../assets/portfolio/note-taker.gif';
+import noteTaker from '../../../../assets/portfolio/note-taker.png';
 import weather from '../../../../assets/portfolio/weather-app.png';
 
 export default function Card({ cards }) {
@@ -25,7 +25,7 @@ export default function Card({ cards }) {
   // sets the card style when hovered
   const overlayStyle = {
     display: isHovered ? 'flex' : 'none',
-    backgroundColor: isHovered ? 'rgba(0, 0, 0, 0.5)' : 'transparent',
+    backgroundColor: isHovered ? 'rgba(68, 129, 200, .5)' : 'transparent',
     transition: 'background-color 0.3s ease',
   };
 
@@ -42,13 +42,13 @@ export default function Card({ cards }) {
 
   return (
     <div
-      className="card text-bg-secondary justify-content-center"
+      className="card bg-light justify-content-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
         height: '327px',
         objectFit: 'cover',
-        // add custom backgroundColor here and remove text-bg-secondary
+        // add custom backgroundColor here and remove bg-
         // backgroundColor: 'powderblue',
       }}>
       {cardImages && (
@@ -58,7 +58,9 @@ export default function Card({ cards }) {
           alt={title}
           style={{
             width: '90%',
+            height: '95%',
             alignSelf: 'center',
+            objectFit: 'contain',
           }}
         />
       )}
@@ -79,7 +81,7 @@ export default function Card({ cards }) {
             <GitHubLogo className="logo mx-2" aria-label="Github logo" fill="white" height="35" width="35" />
           </a>
         </div>
-        <p className="card-text d-flex justify-content-center">
+        <p className="card-text d-flex justify-content-center text-light">
           <small>{description}</small>
         </p>
       </div>
