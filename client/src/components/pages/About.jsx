@@ -38,8 +38,8 @@ export default function About() {
               style={{ maxWidth: '50%', objectFit: 'contain' }}
             />
           </div>
-          <div className="col-12 col-md-6 order-md-2" style={{ width: '48%', objectFit: 'contain' }}>
-            <motion.h2 initial="hidden" animate="visible" variants={fullStack} transition={transition}>
+          <div className="col-12 col-md-6 order-md-2" id="bio" style={{ width: '48%', objectFit: 'contain' }}>
+            <motion.div initial="hidden" animate="visible" variants={fullStack} transition={transition}>
               <h2
                 style={{
                   fontFamily: '"Bebas Neue", sans-serif',
@@ -48,7 +48,7 @@ export default function About() {
                 }}>
                 Full Stack Developer
               </h2>
-            </motion.h2>
+            </motion.div>
             {/* <h2
               style={{
                 fontFamily: '"Bebas Neue", sans-serif',
@@ -57,7 +57,7 @@ export default function About() {
               }}>
               Full Stack Developer
             </h2> */}
-            <motion.h3 initial="hidden" animate="visible" variants={qa} transition={transition}>
+            <motion.div initial="hidden" animate="visible" variants={qa} transition={transition}>
               <h3
                 className="d-flex justify-content-center mb-5"
                 style={{
@@ -67,7 +67,7 @@ export default function About() {
                 }}>
                 QA Automation Engineer
               </h3>
-            </motion.h3>
+            </motion.div>
             {/* <h3
               className="d-flex justify-content-center"
               style={{
@@ -99,6 +99,9 @@ export default function About() {
             }
             #me {
               margin-bottom: 3rem;
+              max-width: 70% !important;
+            }
+            #bio {
               width: 100% !important;
             }
           }
